@@ -1,3 +1,18 @@
+Chrome Browser AddCampaigns to add data
+
+## function AddCampaigns([])
+
+AddCampaigns([
+      {
+        namecd: 'Harprit',
+        startDate: '01/08/2016',
+        endDate: '03/21/2018',
+        active: "inActive",
+        budget: 3000,
+      }]
+
+Please follow the below steps to confiure.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
