@@ -27,7 +27,7 @@ export const CampignTable = ({ rows = [], columns = [] }) => {
           ))}
         </TableBody>
       </Table>
-      {rows.length == 0 && (
+      {rows.length === 0 && (
         <div className={classes.datanotfound}>Campign not available !</div>
       )}
     </>

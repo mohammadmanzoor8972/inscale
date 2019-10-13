@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import { TextField, InputAdornment } from "@material-ui/core";
 import { DatePicker } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { format, isValid, isAfter } from "date-fns";
 import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 const CampignFilters = ({ onChange }) => {
   const [filter, setFilter] = useState({
@@ -98,7 +95,7 @@ const CampignFilters = ({ onChange }) => {
 };
 
 CampignFilters.propTypes = {
-    onChange : PropTypes.func
-}
+  onChange: PropTypes.func
+};
 
 export default CampignFilters;
