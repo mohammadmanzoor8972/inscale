@@ -30,12 +30,12 @@ const CampignFilters = ({onChange}) => {
         
       const startDateChangeHandler=(date)=>{
        const value = date;
-        setFilter({...filter, start:format(value, 'dd/MMM/yyyy')})
+        setFilter({...filter, start:format(value, 'dd/MM/yyyy')})
       }
     
       const endDateChangeHandler=(date)=>{
         const value = date;
-        setFilter({...filter, end:format(value, 'dd/MMM/yyyy')})
+        setFilter({...filter, end:format(value, 'dd/MM/yyyy')})
       }
 
     return (

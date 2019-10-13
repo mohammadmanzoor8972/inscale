@@ -12,9 +12,9 @@ const CampignItems=({row})=>{
         const {startDate, endDate} = row;
 
         var fDate,lDate,cDate;
-       // fDate = Date.parse(format(startDate, "DD/MM/YYYY"));
-        //lDate = Date.parse(format(endDate, "DD/MM/YYYY"));
-        //cDate = Date.parse(format(Date.Now(),"DD/MM/YYYY"));
+        fDate = Date.parse(startDate);
+        lDate = Date.parse(endDate);
+        cDate = Date.now();
     
         if((cDate <= lDate && cDate >= fDate)) {
             return 'Active';
@@ -26,10 +26,10 @@ const CampignItems=({row})=>{
         <TableRow>
             <TableCell align="left">{row.name}</TableCell>
             <TableCell align="left">
-                {row.startDate}
+                {format(Date.parse(row.startDate), 'MM/dd/yyyy')}
             </TableCell>
             <TableCell align="left">
-                {row.endDate}
+            {format(Date.parse(row.endDate), 'MM/dd/yyyy')}
             </TableCell>
             <TableCell align="left" >
                 <FiberManualRecordIcon className={classes[isActive()]}/>
