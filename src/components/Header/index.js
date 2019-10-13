@@ -4,9 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
-import useStyles from './HeaderStyled';
+import useStyles from './styled';
 
-const HeaderNav=()=> {
+const Header=()=> {
     const classes = useStyles();
   
     return (
@@ -30,4 +30,4 @@ const HeaderNav=()=> {
     );
   }
 
-  export default HeaderNav;
+  export default Header;

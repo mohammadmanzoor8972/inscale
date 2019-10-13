@@ -10,5 +10,9 @@ export const useStyles = makeStyles(theme => ({
     },
     table: {
         width:'100%'
+    },
+    datanotfound: {
+        textAlign:"center",
+        width:"100%"
     }
 }))

@@ -1,10 +1,9 @@
 
 import React, {useState} from 'react';
-import HeaderNav from './components/HeaderNav/';
+import Header from './components/Header/';
 import Campign from './components/Campign/';
 
-
-export default function App() {
+const App=()=> {
   const [data, setData] = useState([]);
 
   window.AddCampaigns = function(newData=[]){
@@ -14,8 +13,9 @@ export default function App() {
 
   return (
     <>
-      <HeaderNav/>
+      <Header/>
       <Campign data={data}/>
     </>
   );
 }
+export default App;

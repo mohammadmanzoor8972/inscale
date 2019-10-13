@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import { TextField, InputAdornment } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import {
@@ -13,9 +13,9 @@ import {
 const CampignFilters = ({onChange}) => {
 
     const [filter, setFilter] = useState({
-        text:'',
-        start:null,
-        end:null
+        name:'',
+        startDate:null,
+        endDate:null
     })
 
     useEffect(()=>{
@@ -24,18 +24,26 @@ const CampignFilters = ({onChange}) => {
 
     const textChangeHandler=(event)=>{
         const value = event.currentTarget.value;
-        setFilter({...filter, text:value})
+        setFilter({...filter, name:value.toLowerCase()})
       }
     
         
       const startDateChangeHandler=(date)=>{
        const value = date;
-        setFilter({...filter, start:format(value, 'dd/MM/yyyy')})
+        if(isValid(value)){
+            setFilter({...filter, startDate:format(value, 'MM/dd/yyyy')})
+        } else {
+            setFilter({...filter, startDate:null})
+        }
       }
     
       const endDateChangeHandler=(date)=>{
         const value = date;
-        setFilter({...filter, end:format(value, 'dd/MM/yyyy')})
+        if(isValid(value)){
+            setFilter({...filter, endDate:format(value, 'MM/dd/yyyy')})
+        } else {
+            setFilter({...filter, endDate:null})
+        }
       }
 
     return (
@@ -50,7 +58,7 @@ const CampignFilters = ({onChange}) => {
                         margin="normal"
                         id="date-picker-inline"
                         label="Start Date"
-                        value={filter.start}
+                        value={filter.startDate}
                         onChange={startDateChangeHandler}
                         KeyboardButtonProps={{
                             'aria-label': 'change date',
@@ -65,7 +73,7 @@ const CampignFilters = ({onChange}) => {
                         margin="normal"
                         id="date-picker-inline"
                         label="End Date"
-                        value={filter.end}
+                        value={filter.endDate}
                         onChange={endDateChangeHandler}
                         KeyboardButtonProps={{
                             'aria-label': 'change date',

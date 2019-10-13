@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CampignList from './index';
+import CampignTable from './index';
 import { COLUMNS } from '../Campign/index';
 
 const data  =[{
@@ -13,6 +13,6 @@ const data  =[{
   
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<CampignList rows={data} columns={COLUMNS}/>, div);
+  ReactDOM.render(<CampignTable rows={data} columns={COLUMNS}/>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

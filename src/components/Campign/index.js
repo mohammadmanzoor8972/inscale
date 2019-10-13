@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import  CampignList  from '../CampignList';
+import  CampignTable  from '../CampignTable';
 import  CampignFilters  from '../CampignFilters/';
+import { format, isWithinInterval } from "date-fns";
 import { Paper } from '@material-ui/core';
 import { useStyles } from './styled';
 
@@ -15,15 +16,42 @@ export const COLUMNS = [
 const Campign =({data})=> {
   const classes = useStyles();
 
-  const [filterData, setFilterData] = useState(data);
+  const [filterList, setFilterList] = useState(data);
 
   const onChangeHandler=(filterObj)=>{
-    const dataFilter = [...data].filter((item)=>item.name.includes(filterObj.text) || item.startDate.includes(filterObj.start) );
-    setFilterData(dataFilter);
+    console.log(filterObj);
+    const dataFilter = [...data].filter((item)=> {
+
+        if(item.name.toLowerCase().includes(filterObj.name) && checkDate(filterObj.startDate, filterObj.endDate, item)) {
+            return true;
+        } 
+      return false;
+    });
+    setFilterList(dataFilter);
+  }
+
+  const checkDate=(startDate, endDate, item)=>{
+    if(!startDate || !endDate){
+      return true;
+    }
+
+    if (
+      isWithinInterval(new Date(item.startDate), {
+        start: new Date(startDate),
+        end: new Date(endDate)
+      }) &&
+      isWithinInterval(new Date(item.endDate), {
+        start: new Date(startDate),
+        end: new Date(endDate)
+      }) 
+    ) {
+      return true;
+    }
+    return false
   }
 
   useEffect(()=>{
-    setFilterData(data);
+    setFilterList(data);
   },[data])
 
     return(
@@ -31,8 +59,8 @@ const Campign =({data})=> {
         <CampignFilters 
           onChange={onChangeHandler}
         />
-        <CampignList 
-          rows={filterData} 
+        <CampignTable 
+          rows={filterList} 
           columns={COLUMNS}
           />
       </Paper>

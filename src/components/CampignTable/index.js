@@ -5,13 +5,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import  CampignItems  from '../CampignItems';
-import { useStyles } from './CampignListStyled';
+import { useStyles } from './styled';
 
-export const CampignList = ({ rows = [], columns=[] }) => {
+export const CampignTable = ({ rows = [], columns=[] }) => {
     const classes = useStyles();
 
     return (
-       
+       <>
         <Table className={classes.table} size="small">
             <TableHead>
                 <TableRow className={classes.header}>
@@ -26,7 +26,9 @@ export const CampignList = ({ rows = [], columns=[] }) => {
                 ))}
             </TableBody>
         </Table>
+        {rows.length==0 && <div className={classes.datanotfound}>Campign not available !</div> }
+        </>
     );
 }
 
-export default CampignList;
+export default CampignTable;
